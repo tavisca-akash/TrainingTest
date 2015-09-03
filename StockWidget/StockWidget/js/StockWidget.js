@@ -20,6 +20,9 @@ wHtml += ('<Div id="result">');
 wHtml += ('<Div id="sensexLabel">');
 wHtml += ('	<label>SENSEX</label>');
 wHtml += ('</Div>');
+wHtml += ('<Div id="senseResult">');
+wHtml += ('	<label></label>');
+wHtml += ('</Div>');
 wHtml += ('&nbsp');
 wHtml += ('&nbsp');
 wHtml += ('</Div>');
@@ -61,7 +64,12 @@ var consumeAPI = function (tab) {
             data[j] = field;
             j++;
         })
-        alert(data[2]);
+        displayResult(data);
 
     });
+}
+
+var displayResult = function (data) {
+    var resultLabel = document.getElementById("senseResult");
+    resultLabel.innerHTML = data[2];
 }

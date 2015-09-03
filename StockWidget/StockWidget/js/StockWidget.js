@@ -17,10 +17,10 @@ wHtml += ('&nbsp');
 
 //---SENSEX result
 wHtml += ('<Div id="result">');
-wHtml += ('<Div id="sensexLabel">');
+wHtml += ('<Div id="exchangeLabel">');
 wHtml += ('	<label>SENSEX</label>');
 wHtml += ('</Div>');
-wHtml += ('<Div id="senseResult">');
+wHtml += ('<Div id="exchangeResult">');
 wHtml += ('	<label></label>');
 wHtml += ('</Div>');
 wHtml += ('&nbsp');
@@ -30,6 +30,11 @@ wHtml += ('</Div>');
 wHtml += ('<Div id="range">');
 wHtml += ('	<label>Todays HIGH/LOW</label>');
 wHtml += ('</Div>');
+
+wHtml += ('<Div id="highLow">');
+wHtml += ('	<label></label>');
+wHtml += ('</Div>');
+
 wHtml += ('&nbsp');
 wHtml += ('&nbsp');
 
@@ -70,6 +75,9 @@ var consumeAPI = function (tab) {
 }
 
 var displayResult = function (data) {
-    var resultLabel = document.getElementById("senseResult");
-    resultLabel.innerHTML = data[2];
+    var resultLabel = document.getElementById("exchangeResult");
+    resultLabel.innerHTML = data[2] + " " + data[3] + '&nbsp' + "  (" + '&nbsp' + data[4] + ")";
+    var highlow = document.getElementById("highLow");
+    highlow.innerHTML = data[6] + '&nbsp' + data[7];
+
 }

@@ -40,7 +40,7 @@
         $(".nav-tabs a").click(function () {
             var tabUrl = "" + this;
             var tab = parseTab(tabUrl);
-            alert(tab);
+            
         })
     });
 

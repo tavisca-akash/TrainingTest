@@ -1,0 +1,8 @@
+D:\TrainingTest\AssignmentB\Consumer\bin\Debug\Consumer.exe.config
+D:\TrainingTest\AssignmentB\Consumer\bin\Debug\Consumer.exe
+D:\TrainingTest\AssignmentB\Consumer\bin\Debug\Consumer.pdb
+D:\TrainingTest\AssignmentB\Consumer\bin\Debug\AssignmentB.dll
+D:\TrainingTest\AssignmentB\Consumer\bin\Debug\AssignmentB.pdb
+D:\TrainingTest\AssignmentB\Consumer\obj\Debug\Consumer.exe
+D:\TrainingTest\AssignmentB\Consumer\obj\Debug\Consumer.pdb
+D:\TrainingTest\AssignmentB\Consumer\obj\Debug\Consumer.csprojResolveAssemblyReference.cache

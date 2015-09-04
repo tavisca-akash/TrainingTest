@@ -1,0 +1,5 @@
+SELECT SUM(OrderAmount)/SUM(Salary)
+FROM Assignments.dbo.Employees as employee 
+right OUTER JOIN Assignments.dbo.Orders as orders
+ON employee.Id=orders.Id
+GROUP BY DATEPART(QUARTER, OrderDate),DATEPART(YEAR, OrderDate);

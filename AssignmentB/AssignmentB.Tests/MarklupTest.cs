@@ -8,7 +8,7 @@ namespace AssignmentB.Tests
     public class MarklupTest
     {
         [TestMethod]
-        public void AllSameData()
+        public void AllFactorsSame_Test()
         {
             Itinerary publishedRateObject = new Itinerary();
             publishedRateObject.BaseFareInUSD = 100;
@@ -28,7 +28,7 @@ namespace AssignmentB.Tests
             markupAnswer = markupManager.CalculateMarkup(publishedRateObject, discountedRates);
 
 
-            decimal[] expected = { 15, 15 };
+            decimal[] expected = { 25, 25 };
             decimal[] actual = new decimal[2];
             int i = 0;
             foreach (Itinerary dis in markupAnswer)
@@ -40,7 +40,7 @@ namespace AssignmentB.Tests
 
         }
         [TestMethod]
-        public void AllDifferentData()
+        public void NumberOfStopsOrTotalLAyoutDifferent_Test()
         {
             Itinerary publishedRateObject = new Itinerary();
             publishedRateObject.BaseFareInUSD = 100;
@@ -74,6 +74,47 @@ namespace AssignmentB.Tests
             }
             CollectionAssert.AreEqual(answer, answer2);
         }
+
+        [TestMethod]
+        public void NumberOfStopsAndTotalLAyoutDifferent_Test()
+        {
+            Itinerary publishedRateObject = new Itinerary();
+            publishedRateObject.BaseFareInUSD = 100;
+            publishedRateObject.NumberOfStops = 3;
+            publishedRateObject.TotalLayoverTime = new TimeSpan(0,2,3,4,5);
+
+
+            List<Itinerary> discountedRates = new List<Itinerary>();
+            Itinerary discountedOne = new Itinerary();
+            discountedOne.BaseFareInUSD = 75;
+            discountedOne.NumberOfStops = 2;
+            discountedOne.TotalLayoverTime = new TimeSpan(0, 3, 3, 4, 5);
+
+            discountedRates.Add(discountedOne);
+
+
+            Itinerary discountedTwo = new Itinerary();
+
+            discountedTwo.BaseFareInUSD = 75;
+            discountedTwo.NumberOfStops = 4;
+            discountedTwo.TotalLayoverTime = new TimeSpan(0, 3, 3, 4, 5);
+            discountedRates.Add(discountedTwo);
+
+            List<Itinerary> markupAnswer = new List<Itinerary>();
+            MarkupManager markupManager = new MarkupManager();
+            markupAnswer = markupManager.CalculateMarkup(publishedRateObject, discountedRates);
+
+            decimal[] answer = { 25, 5 };
+            decimal[] answer2 = new decimal[2];
+            int i = 0;
+            foreach (Itinerary dis in markupAnswer)
+            {
+                answer2[i] = dis.MarkupInUSD;
+                i++;
+            }
+            CollectionAssert.AreEqual(answer, answer2);
+        }
+
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public void ExceptionOccured()

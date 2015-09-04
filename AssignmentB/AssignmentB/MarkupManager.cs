@@ -24,6 +24,10 @@ namespace AssignmentB
 
                 else if (published.NumberOfStops < discount.NumberOfStops)
                     markupAnswer.Add(CalculateMarkupWithMoreNoOfStops(published, discount));
+                else if (published.TotalLayoverTime > discount.TotalLayoverTime)
+                    markupAnswer.Add(CalculateMarkupWithlesslLayoverTime(published, discount));
+                else
+                    markupAnswer.Add(CalculateMarkupWithMoreNoOfStops(published,discount));
             }
             return markupAnswer;
         }
@@ -37,24 +41,49 @@ namespace AssignmentB
 
         public Itinerary CalculateMarkupWithSameData(Itinerary published, Itinerary discounted)
         {
-            if ((published.BaseFareInUSD - discounted.BaseFareInUSD) > 15)
-                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
+            
+            discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD;
             return discounted;
         }
 
         public Itinerary CalculateMarkupWithlessNoOfStops(Itinerary published, Itinerary discounted)
         {
-
-            discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
+            if(published.TotalLayoverTime > discounted.TotalLayoverTime )
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 20;
+            else if (published.TotalLayoverTime < discounted.TotalLayoverTime)
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD;
+            else
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
             return discounted;
         }
 
         public Itinerary CalculateMarkupWithMoreNoOfStops(Itinerary published, Itinerary discounted)
         {
-            discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
-
+            if (published.TotalLayoverTime > discounted.TotalLayoverTime)
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD;
+            else if (published.TotalLayoverTime < discounted.TotalLayoverTime)
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD-20;
+            else
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
+            
+            return discounted;
+        }
+        public Itinerary CalculateMarkupWithlesslLayoverTime(Itinerary published, Itinerary discounted)
+        {
+            if (published.NumberOfStops > discounted.NumberOfStops)
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 20;
+            else
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
             return discounted;
         }
 
+        public Itinerary CalculateMarkupWithMorelLayoverTime(Itinerary published, Itinerary discounted)
+        {
+            if (published.NumberOfStops > discounted.NumberOfStops)
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 20;
+            else
+                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
+            return discounted;
+        }
     }
 }

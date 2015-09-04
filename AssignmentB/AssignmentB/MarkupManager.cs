@@ -24,6 +24,7 @@ namespace AssignmentB
 
                 else if (published.NumberOfStops < discount.NumberOfStops)
                     markupAnswer.Add(CalculateMarkupWithMoreNoOfStops(published, discount));
+
                 else if (published.TotalLayoverTime > discount.TotalLayoverTime)
                     markupAnswer.Add(CalculateMarkupWithlesslLayoverTime(published, discount));
                 else
@@ -36,6 +37,7 @@ namespace AssignmentB
         {
             if (published.NumberOfStops == discounted.NumberOfStops)
                 return true;
+           
             return false;
         }
 
@@ -50,10 +52,13 @@ namespace AssignmentB
         {
             if(published.TotalLayoverTime > discounted.TotalLayoverTime )
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 20;
+
             else if (published.TotalLayoverTime < discounted.TotalLayoverTime)
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD;
+            
             else
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
+            
             return discounted;
         }
 
@@ -61,8 +66,10 @@ namespace AssignmentB
         {
             if (published.TotalLayoverTime > discounted.TotalLayoverTime)
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD;
+          
             else if (published.TotalLayoverTime < discounted.TotalLayoverTime)
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD-20;
+            
             else
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
             
@@ -72,8 +79,10 @@ namespace AssignmentB
         {
             if (published.NumberOfStops > discounted.NumberOfStops)
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 20;
+           
             else
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
+            
             return discounted;
         }
 
@@ -81,8 +90,10 @@ namespace AssignmentB
         {
             if (published.NumberOfStops > discounted.NumberOfStops)
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 20;
+            
             else
                 discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
+            
             return discounted;
         }
     }

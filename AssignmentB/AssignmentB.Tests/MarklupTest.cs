@@ -45,6 +45,7 @@ namespace AssignmentB.Tests
             Itinerary publishedRateObject = new Itinerary();
             publishedRateObject.BaseFareInUSD = 100;
             publishedRateObject.NumberOfStops = 3;
+          
 
             List<Itinerary> discountedRates = new List<Itinerary>();
             Itinerary discountedOne = new Itinerary();

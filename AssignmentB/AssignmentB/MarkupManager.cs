@@ -12,7 +12,7 @@ namespace AssignmentB
         {
             if (published.Equals(null))
                 throw new NullReferenceException();
-            
+
             List<Itinerary> markupAnswer = new List<Itinerary>();
             foreach (Itinerary discount in discounted)
             {
@@ -28,9 +28,9 @@ namespace AssignmentB
             return markupAnswer;
         }
 
-        public bool IsAllDataSame(Itinerary published,Itinerary discounted)
+        public bool IsAllDataSame(Itinerary published, Itinerary discounted)
         {
-            if(published.NumberOfStops==discounted.NumberOfStops)
+            if (published.NumberOfStops == discounted.NumberOfStops)
                 return true;
             return false;
         }
@@ -44,16 +44,16 @@ namespace AssignmentB
 
         public Itinerary CalculateMarkupWithlessNoOfStops(Itinerary published, Itinerary discounted)
         {
-            
-                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
+
+            discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD + 10;
             return discounted;
         }
 
         public Itinerary CalculateMarkupWithMoreNoOfStops(Itinerary published, Itinerary discounted)
         {
-                discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
-            
-              return discounted;
+            discounted.MarkupInUSD = published.BaseFareInUSD - discounted.BaseFareInUSD - 10;
+
+            return discounted;
         }
 
     }
